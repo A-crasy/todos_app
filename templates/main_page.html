@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td {
+    font-size: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+</style>
+<body>
+    <center> THE TODO LIST WELCOME {{username}} : </center>
+    <center>
+        <form action="/addtodo" method="get"><button type="submit" value="submit">ADD TODO</button></form>
+    <table  width="100%">
+      <tr>
+        <td>
+          ids
+        </td>
+        <td>
+          title
+        </td>
+          <td>
+          content
+        </td>
+          <td>
+          date
+        </td>
+          <td>
+          time
+        </td>
+          <td>
+          status
+        </td>
+
+      </tr>
+      {% for x in list1 %}
+        {% if x['node']['userId'] == users %}
+            <tr>
+            <td>
+              <h3>{{ x['node']['ids'] }}</h3>
+            </td>
+            <td>
+              <h3>{{  x['node']['title'] }}</h3>
+            </td>
+                <td>
+              <h3>{{  x['node']['content'] }}</h3>
+            </td>
+                <td>
+              <h3>{{  x['node']['date'] }}</h3>
+            </td>
+                <td>
+              <h3>{{  x['node']['time'] }}</h3>
+            </td>
+                <td>
+              <h3>{{  x['node']['status'] }}</h3>
+            </td>
+                <td>
+                    <form action="/edits/{{users}}" method="get"><button type="submit" value="submit">Delete</button></form>
+
+
+                </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+    </center>
+
+
+
+</body>
+</html>
